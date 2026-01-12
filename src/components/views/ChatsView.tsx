@@ -24,18 +24,8 @@ interface Chat {
 const ChatsView = ({ userData }: any) => {
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
   const [messageInput, setMessageInput] = useState('');
-  const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: 'Привет! Как дела?', sender: 'other', time: '10:30' },
-    { id: 2, text: 'Отлично! А у тебя?', sender: 'me', time: '10:32' },
-    { id: 3, text: 'Тоже супер! Что планируешь на выходные?', sender: 'other', time: '10:35' },
-  ]);
-
-  const [chats] = useState<Chat[]>([
-    { id: 1, name: 'Анна Смирнова', avatar: '👩', lastMessage: 'Тоже супер! Что планируешь...', time: '10:35', unread: 2 },
-    { id: 2, name: 'Команда WIX', avatar: '🚀', lastMessage: 'Новые функции уже доступны!', time: 'Вчера', unread: 5 },
-    { id: 3, name: 'Дмитрий Петров', avatar: '👨', lastMessage: 'Созвонимся завтра?', time: 'Вчера', unread: 0 },
-    { id: 4, name: 'Мама ❤️', avatar: '💕', lastMessage: 'Не забудь позвонить', time: '15 янв', unread: 0 },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [chats] = useState<Chat[]>([]);
 
   const handleSendMessage = () => {
     if (!messageInput.trim()) return;

@@ -18,11 +18,25 @@ const RegistrationFlow = ({ onComplete }: RegistrationFlowProps) => {
 
   const emojis = ['😊', '😎', '🚀', '💜', '🔥', '⚡', '🌟', '🎨', '🎭', '🎪', '🎯', '💎'];
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (step < 4) {
       setStep(step + 1);
     } else {
-      onComplete({ phone, nickname, username, avatar });
+      try {
+        const response = await fetch('https://functions.poehali.dev/b0d04207-7cf1-4c43-afe4-7453b858a011?action=register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone, password, nickname, username, avatar })
+        });
+        const data = await response.json();
+        if (data.success) {
+          onComplete({ ...data.user, phone });
+        } else {
+          alert('Ошибка регистрации: ' + (data.error || 'Неизвестная ошибка'));
+        }
+      } catch (error) {
+        alert('Ошибка подключения к серверу');
+      }
     }
   };
 

@@ -2,6 +2,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import Icon from '@/components/ui/icon';
+import { toast } from '@/components/ui/use-toast';
 
 const CallsView = () => {
   const calls = [
@@ -44,11 +45,21 @@ const CallsView = () => {
                 </div>
                 <div className="flex gap-2">
                   {call.type === 'video' ? (
-                    <Button variant="ghost" size="icon" className="text-primary">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="text-primary"
+                      onClick={() => toast({ title: 'Видеозвонок', description: `Видеозвонок ${call.name}...` })}
+                    >
                       <Icon name="Video" />
                     </Button>
                   ) : (
-                    <Button variant="ghost" size="icon" className="text-primary">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="text-primary"
+                      onClick={() => toast({ title: 'Звонок', description: `Звонок ${call.name}...` })}
+                    >
                       <Icon name="Phone" />
                     </Button>
                   )}
@@ -63,6 +74,7 @@ const CallsView = () => {
         <Button
           size="icon"
           className="w-16 h-16 rounded-full gradient-primary text-white shadow-lg hover:scale-110 transition-transform"
+          onClick={() => toast({ title: 'Новый звонок', description: 'Выберите контакт для звонка' })}
         >
           <Icon name="PhonePlus" size={28} />
         </Button>

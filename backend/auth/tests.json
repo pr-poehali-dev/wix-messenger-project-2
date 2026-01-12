@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "name": "Test user registration",
+      "method": "POST",
+      "path": "/?action=register",
+      "body": {
+        "phone": "+79999999999",
+        "password": "test123456",
+        "nickname": "Test User New",
+        "username": "testusernew",
+        "avatar": "😊"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "user": {
+          "id": "number",
+          "nickname": "string",
+          "username": "string",
+          "avatar": "string",
+          "is_premium": "boolean"
+        }
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

@@ -19,7 +19,10 @@ const MainApp = ({ userData }: MainAppProps) => {
       <header className="gradient-primary p-4 shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <h1 className="text-3xl font-bold text-white">WIX</h1>
-          <div className="flex items-center gap-3">
+          <button 
+            onClick={() => setActiveTab('profile')}
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+          >
             <div className="text-right">
               <p className="text-white font-semibold">{userData.nickname}</p>
               <p className="text-white/70 text-sm">@{userData.username}</p>
@@ -27,7 +30,7 @@ const MainApp = ({ userData }: MainAppProps) => {
             <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl border-2 border-white/30">
               {userData.avatar}
             </div>
-          </div>
+          </button>
         </div>
       </header>
 
