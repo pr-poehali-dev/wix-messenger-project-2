@@ -6,6 +6,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import Icon from '@/components/ui/icon';
+import { toast } from '@/components/ui/use-toast';
 
 const SettingsView = () => {
   const [notifications, setNotifications] = useState(true);
@@ -84,15 +85,27 @@ const SettingsView = () => {
             Конфиденциальность
           </h3>
           <div className="space-y-3">
-            <Button variant="outline" className="w-full justify-start h-12 border-primary/30">
+            <Button 
+              variant="outline" 
+              className="w-full justify-start h-12 border-primary/30"
+              onClick={() => toast({ title: 'Изменение пароля', description: 'Функция скоро будет доступна' })}
+            >
               <Icon name="Lock" className="mr-3" />
               Изменить пароль
             </Button>
-            <Button variant="outline" className="w-full justify-start h-12 border-primary/30">
+            <Button 
+              variant="outline" 
+              className="w-full justify-start h-12 border-primary/30"
+              onClick={() => toast({ title: 'Конфиденциальность', description: 'Ваш профиль видят только ваши контакты' })}
+            >
               <Icon name="Eye" className="mr-3" />
               Кто видит мой профиль
             </Button>
-            <Button variant="outline" className="w-full justify-start h-12 border-primary/30">
+            <Button 
+              variant="outline" 
+              className="w-full justify-start h-12 border-primary/30"
+              onClick={() => toast({ title: 'Заблокированные', description: 'У вас нет заблокированных пользователей' })}
+            >
               <Icon name="UserCheck" className="mr-3" />
               Заблокированные пользователи
             </Button>
@@ -117,7 +130,11 @@ const SettingsView = () => {
             <div className="h-2 bg-muted rounded-full overflow-hidden">
               <div className="h-full gradient-primary w-[48%]"></div>
             </div>
-            <Button variant="outline" className="w-full h-12 border-primary/30">
+            <Button 
+              variant="outline" 
+              className="w-full h-12 border-primary/30"
+              onClick={() => toast({ title: 'Кэш очищен', description: 'Освобождено 1.2 GB' })}
+            >
               <Icon name="Trash2" className="mr-2" />
               Очистить кэш
             </Button>
@@ -141,7 +158,11 @@ const SettingsView = () => {
           </div>
         </Card>
 
-        <Button variant="destructive" className="w-full h-12">
+        <Button 
+          variant="destructive" 
+          className="w-full h-12"
+          onClick={() => toast({ title: 'Выход', description: 'До скорой встречи!' })}
+        >
           <Icon name="LogOut" className="mr-2" />
           Выйти из аккаунта
         </Button>
